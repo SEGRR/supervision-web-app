@@ -1,0 +1,107 @@
+.modal-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    background-color: #fff;
+
+}
+
+
+.icon {
+    width: 100px;
+    height: 100px;
+    margin-top: -57px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 4px solid #c9dae1;
+    border-radius: 50%;
+    color: #878787;
+
+    cursor: default;
+    animation: fadeIn 0.5s ease-in;
+
+}
+
+.icon i {
+    font-size: 95px;
+
+}
+
+.mainmessage {
+    font-size: 25px;
+    font-weight: bold;
+    margin: 0px;
+
+}
+
+.button {
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 3px;
+    background-color: #1565C0;
+    color: #fff;
+    border: none;
+    width: fit-content;
+    font-size: 17px;
+
+}
+
+.button:hover {
+    opacity: 0.8;
+}
+
+.button-container {
+    display: flex;
+    gap: 15px;
+}
+
+#btn-cancel {
+    background-color: #6D7882;
+}
+
+.animated-icon {
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.success .animated-icon {
+    animation-name: fadeIn;
+    color: #96eb9d;
+}
+
+.warning .animated-icon {
+    animation-name: bounce;
+    color: #F7BA46;
+}
+
+.error .animated-icon {
+    animation-name: bounce;
+    color: #D32F2F;
+}
