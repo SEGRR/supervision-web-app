@@ -388,8 +388,6 @@ export default function ScheduleBasicForm({
                   variant="outlined"
                   size="small"
                   name="title"
-                  error={formData?.title}
-                  helperText={formData?.title}
                   value={formData.title}
                   onChange={(e) =>
                     setFormData({ ...formData, title: e.target.value })
