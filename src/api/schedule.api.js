@@ -57,12 +57,3 @@ export async function removeScheduleById(id) {
 }
 
 
-export async function fetchAllSubjects() {
-  try {
-    const response = await axios.get(`${url}/subjects`);
-    return response.data;
-  } catch (error) {
-    console.log("Error:", error);
-    return null;
-  }
-}

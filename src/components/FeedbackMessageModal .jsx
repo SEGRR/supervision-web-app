@@ -36,8 +36,8 @@ const FeedbackMessageModal = ({ open, onClose, data, feedbackType }) => {
         <Typography variant="h5" id="feedback-modal-description">
           {data.title}
         </Typography>
-        <Typography variant="subtitle1" id="feedback-modal-description">
-          {data.message}
+        <Typography variant="subtitle1" id="feedback-modal-description" dangerouslySetInnerHTML={{ __html: data.message }}>
+          {/* {data.message} */}
         </Typography>
         <Button
           onClick={onClose}

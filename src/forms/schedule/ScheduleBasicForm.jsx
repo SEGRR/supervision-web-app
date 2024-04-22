@@ -269,8 +269,7 @@ import {
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import MultiSelect from "../../components/MultiSelect";
-import { fetchAllSubjects } from "../../api/schedule.api";
-import { fetchAllBlocks } from "../../api/seating.arragement.api";
+import { fetchAllBlocks, fetchAllSubjects } from "../../api/utility.api";
 
 export default function ScheduleBasicForm({
   activeStep,

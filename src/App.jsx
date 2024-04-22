@@ -7,6 +7,7 @@ import StudentSection from './sections/StudentSection'
 import NoPage from './sections/NoPage'
 import ScheduleForm from './forms/schedule/ScheduleForm'
 import SeatingArrangementForm from './forms/seating-arrangement/SeatingArrangementForm'
+import UtilitySection from './sections/UtilitySection'
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
 
           <Route path="seating-arrangement" element={<StudentSection />} />
           <Route path="seating-arrangement/add" element={<SeatingArrangementForm />} /> 
+          <Route path="utility-section" element={<UtilitySection />} /> 
 
         </Route>
         <Route path="*" element={<NoPage />} />

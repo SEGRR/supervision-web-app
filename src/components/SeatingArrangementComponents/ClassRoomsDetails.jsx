@@ -8,7 +8,7 @@ import {
 
 } from "@mui/material";
 import MultiSelect from "../MultiSelect";
-import { fetchAllBlocks } from "../../api/seating.arragement.api";
+import { fetchAllBlocks } from "../../api/utility.api";
 export default function ClassroomsDetails({ formData, setFormData }) {
 
   const [classRoomData, setClassRoomData] = useState();

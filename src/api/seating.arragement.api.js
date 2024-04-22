@@ -4,14 +4,6 @@ import axios from "axios";
 const url = import.meta.env.VITE_APP_API_URL;
 
 
-export async function fetchAllBlocks() {
-  try {
-    const response = await axios.get(`${url}/blocks/`);
-    return response.data;
-  } catch (error) {
-    console.error("Error:", error);
-  }
-}
 export async function fetchAllSeatingArrangement() {
   try {
     const response = await axios.get(`${url}/seatings`);
