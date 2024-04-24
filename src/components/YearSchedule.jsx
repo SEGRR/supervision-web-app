@@ -42,6 +42,7 @@ export default function YearSchedule({ teacherData, year, yearIndex, formData, h
                                         size="small"
                                         defaultValue={index}
                                         value={index}
+                                        type="date"
                                         onChange={(e) => {
                                             const newDays = [...days];
                                             newDays[i] = e.target.value;

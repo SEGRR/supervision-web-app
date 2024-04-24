@@ -23,17 +23,17 @@ export function generateSchedulePdfFile(scheduleData, teacherData) {
             ].length / scheduleData.paperSlotsPerDay
         );
     }
-
+    console.log(scheduleData);
     scheduleData.yearSchedule.forEach((year, yearIndex) => {
         var headersData = [];
         var bodyRow = [];
         console.log("page", yearIndex + 1);
         doc.setFontSize(16);
         const pageWidth = doc.internal.pageSize.getWidth();
-        var textWidth =0;
-        var textX =0;
-        
-        
+        var textWidth = 0;
+        var textX = 0;
+
+
         textWidth = doc.getStringUnitWidth(`PUNE INSTITUTE OF COMPUTER TECHNOLOGY`) * doc.internal.getFontSize() / doc.internal.scaleFactor;
         textX = (pageWidth - textWidth) / 2;
         doc.text(textX, 15, `PUNE INSTITUTE OF COMPUTER TECHNOLOGY`);
@@ -49,23 +49,33 @@ export function generateSchedulePdfFile(scheduleData, teacherData) {
         textWidth = doc.getStringUnitWidth(`Duty Schedule of ${scheduleData.selectedYears[yearIndex]}`) * doc.internal.getFontSize() / doc.internal.scaleFactor;
         textX = (pageWidth - textWidth) / 2;
         doc.text(textX, 36, `Duty Schedule ${scheduleData.selectedYears[yearIndex]}`);
+        doc.setFontSize(14);
+        var temp = 0 ;
+        scheduleData.paperTimeSlots.forEach(function (paperTime, index) {
+            textWidth = doc.getStringUnitWidth(`Duty Schedule of ${scheduleData.selectedYears[yearIndex]}`) * doc.internal.getFontSize() / doc.internal.scaleFactor;
+            textX = (pageWidth - textWidth) / 2;
+            temp = 36+(7*(index+1));
+            doc.text(textX, temp, `Slot: ${index+1} ${paperTime.startTime} - ${paperTime.endTime}`);
+        })
+
 
         const days = [
             { content: "Teacher Name", rowSpan: 3 },
-            ...year.headers.days.map((value,index) => {
-                if(year.headers.days.length==index+1){
-                    if(scheduleData.subjectsPerYear[scheduleData.selectedYears[yearIndex]].length%2!=0){
-                        return({
+            ...year.headers.days.map((value, index) => {
+                if (year.headers.days.length == index + 1) {
+                    if (scheduleData.subjectsPerYear[scheduleData.selectedYears[yearIndex]].length % 2 != 0) {
+                        return ({
                             content: value,
-                            colSpan: Math.ceil(Math.ceil(scheduleData.noOfBlocksPerYear[scheduleData.selectedYears[yearIndex]].length) ),
+                            colSpan: Math.ceil(Math.ceil(scheduleData.noOfBlocksPerYear[scheduleData.selectedYears[yearIndex]].length)),
                         })
                     }
                 }
-                
-                return({
-                content: value,
-                colSpan: Math.ceil(Math.ceil(scheduleData.noOfBlocksPerYear[scheduleData.selectedYears[yearIndex]].length) * scheduleData.paperSlotsPerDay),
-            })}),
+
+                return ({
+                    content: value,
+                    colSpan: Math.ceil(Math.ceil(scheduleData.noOfBlocksPerYear[scheduleData.selectedYears[yearIndex]].length) * scheduleData.paperSlotsPerDay),
+                })
+            }),
         ];
 
         const subjects = year.headers.subjects.map((value) => ({
@@ -91,7 +101,7 @@ export function generateSchedulePdfFile(scheduleData, teacherData) {
             body: bodyRow,
             theme: "grid",
             styles: styles,
-            startY: 42,
+            startY: temp+2,
             margin: 5
 
         });
@@ -102,7 +112,7 @@ export function generateSchedulePdfFile(scheduleData, teacherData) {
         }
     });
 
-    doc.save("schedule.pdf");
+    doc.save(`${scheduleData.title} Schedule`);
 }
 export function generateSeatingPdfFile(formData) {
     var doc = new jsPDF({ orientation: "l" });
